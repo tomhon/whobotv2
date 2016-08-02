@@ -344,7 +344,7 @@ var server = restify.createServer();
 server.get('/', function (req, res) {
         res.send('K9 PreProduction Running ' + arrayErr.length + " " + arrayErr[0] + " " + arrayErr[1] + " " + arrayIsvTE.length);
         arrayErr.forEach(function(item) {
-            res.send( "K9 Bot = " + item); 
+            console.log( "K9 Bot = " + item); 
             });
     });
 
