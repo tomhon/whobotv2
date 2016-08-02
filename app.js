@@ -342,7 +342,7 @@ if (!evangelist) {
 // Setup Restify Server
 var server = restify.createServer();
 server.get('/', function (req, res) {
-    res.send('K9 PreProduction Running ' + arrayErr.length + " " + arrayErr[0] + " " + arrayErr[1] + " " + arrayIsvTE[0]);
+    res.send('K9 PreProduction Running ' + arrayErr.length + " " + arrayErr[0] + " " + arrayErr[1] + " " + arrayIsvTE.length);
 });
 
 
