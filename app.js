@@ -342,7 +342,7 @@ if (!evangelist) {
 // Setup Restify Server
 var server = restify.createServer();
 server.get('/', function (req, res) {
-    res.send('Running');
+    res.send('K9 PreProduction Running');
 });
 // server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
 server.post('/api/messages', bot.listen());
