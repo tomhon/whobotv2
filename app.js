@@ -24,6 +24,8 @@ var arrayErr = new Array();
 
 //set up SQL server connection using Application Environment Variables
 
+if (process.env.SQLserver) {
+
     var config = {
             userName: process.env.SQLuserName,
             password: process.env.SQLpassword,
@@ -31,6 +33,17 @@ var arrayErr = new Array();
             // If you are on Microsoft Azure, you need this:
             options: {encrypt: true, database: process.env.SQLdatabase}
         };
+} else {
+
+    var config = {
+            userName: 'teslovetohack@k9',
+            password: 'Building9',
+            server: 'k9.database.windows.net',
+            // If you are on Microsoft Azure, you need this:
+            options: {encrypt: true, database: 'TEDGISV'}
+        };
+
+}
 
 var connection = new Connection(config);
 connection.on('connect', function(err) {
@@ -78,11 +91,23 @@ connection.on('connect', function(err) {
 
 // Create bot and add dialogs
 // setTimeout(function() {
+if (process.env.AppSecret) {
     var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
+} else {
+    var bot = new builder.BotConnectorBot({ appId: '2c17262d-aa39-46d6-aa09-507cc0472fe1', appSecret: 'iH2x4qqB6HQiWjpMf5XtFdj' });
+}
+
 // },5000);
 
 // Connect to LUIS application
-var dialog = new builder.LuisDialog(process.env.LUISServiceURL);
+
+if (process.env.LUISServiceURL) {
+    var dialog = new builder.LuisDialog(process.env.LUISServiceURL);
+} else {
+    var dialog = new builder.LuisDialog('https://api.projectoxford.ai/luis/v1/application?id=a2925c56-a51c-44ec-a86e-573d8ae43d8c&subscription-key=929a376180624437bc881e4501940e3e');
+}
+
+
 bot.add('/', dialog);
 
 
